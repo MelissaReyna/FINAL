@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+
+    <%- include('partials/header_dashboard', { page: 'Pricing' }) %>
+
+
+    <!-- ==================== MAIN ==================== -->
+    <main class="main">
+        
+        <%- include('partials/home_sections', { homeSubtitle: 'Pricing', homeDescription: 'Choose the perfect fitness plan to meet your goals and start your fitness journey today!' }) %>
+
+        <%- include('partials/pricing/pricing') %>
+        
+    </main>
+
+    <%- include('partials/modal_delete') %> 
+
+    <%- include('partials/footer') %>
+
+    <%- include('partials/scripts') %>
+
+</body>
+
+</html>

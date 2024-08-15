@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <%- include('partials/head') %>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="/" class="nav_logo">
+                <img src="/img/logo.png" alt="">
+            </a>
+
+            <!-- Toggle button -->
+            <div class="nav_toggle" id="nav-toggle">
+                <i class="ri-menu-3-line"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="home section" id="home">
+        <div class="home_container container grid">
+
+            <div class="container userCard">
+                <h1>Sign Up</h1>
+                <form class="authCard" action="/signup" method="post">
+                    <input class="footer_input marginAuth" type="text" name="username" placeholder="Username" value="<%= username %>" required>
+                    <% if (errors && errors.some(error => error.param === 'username')) { %>
+                        <p class="error-message"><%= errors.find(error => error.param === 'username').msg %></p>
+                    <% } %>
+                    <input class="footer_input marginAuth" type="password" name="password" placeholder="Password" required>
+                    <% if (errors && errors.some(error => error.param === 'password')) { %>
+                        <p class="error-message"><%= errors.find(error => error.param === 'password').msg %></p>
+                    <% } %>
+                    <button class="button marginAuth" type="submit">Sign Up</button>
+                </form>
+                
+                <% if (errors && errors.length > 0) { %>
+                    <div class="error-summary">
+                        <% errors.forEach(error => { %>
+                            <p class="error-message"><%= error.msg %></p>
+                        <% }); %>
+                    </div>
+                <% } %>
+
+                <p class="mt-2">Have an account?</p><a class="otherLink" href="/login">Login</a>
+            </div>
+            
+            <div class="home_images">
+                <img src="/img/home-img.png" alt="" class="home_img">
+
+                <div class="home_triangle home_triangle-3"></div>
+                <div class="home_triangle home_triangle-2"></div>
+                <div class="home_triangle home_triangle-1"></div>
+            </div>
+        </div>
+    </section> 
+
+    <%- include('partials/scripts') %>
+</body>
+</html>

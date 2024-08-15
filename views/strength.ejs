@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+
+    <%- include('partials/header_dashboard', { page: 'Strength' }) %>
+
+    <!-- ==================== MAIN ==================== -->
+    <main class="main">
+        
+        <%- include('partials/home_sections', { homeSubtitle: 'Routines', homeDescription: 'Targeted exercises for muscles, emphasizing consistency and progressive overload for optimal results in fitness and wellbeing.' }) %>
+
+        <%- include('partials/strength/program') %>
+        
+    </main>
+
+    <%- include('partials/modal_delete') %> 
+
+    <%- include('partials/footer') %>
+
+    <%- include('partials/scripts') %>
+
+</body>
+
+</html>

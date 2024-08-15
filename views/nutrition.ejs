@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+
+    <%- include('partials/header_dashboard', { page: 'Nutrition' }) %>
+
+    <!-- ==================== MAIN ==================== -->
+    <main class="main">
+        
+        <%- include('partials/home_sections', { homeSubtitle: 'Nutrition Plans', homeDescription: 'Explore personalized nutrition plans with tailored breakfast, lunch, and dinner options.' }) %>
+
+        <%- include('partials/nutrition/calculator') %>
+        
+    </main>
+
+    <%- include('partials/modal_delete') %> 
+
+    <%- include('partials/footer') %>
+
+    <%- include('partials/scripts') %>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head') %>
+<body>
+
+    <%- include('partials/header_dashboard', { page: 'Exercises' }) %>
+
+    <!-- ==================== MAIN ==================== -->
+    <main class="main">
+        
+        <%- include('partials/home_sections', { homeSubtitle: 'Exercises', homeDescription: 'We offer a variety of fitness programs tailored to meet your needs and goals.' }) %>
+
+        <%- include('partials/exercises/program_exercises') %>
+        
+    </main>
+
+    <%- include('partials/modal_delete') %> 
+
+    <%- include('partials/footer') %>
+
+    <%- include('partials/scripts') %>
+
+</body>
+
+</html>

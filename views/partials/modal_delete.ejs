@@ -1,0 +1,43 @@
+<div id="logout-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('logout-modal')">&times;</span>
+        <p>Are you sure you want to logout?</p>
+        <form>
+            <button class="button" type="button" onclick="window.location.href='/logout'">
+                Yes
+            </button>
+            <button class="button_delete" type="button" onclick="closeModal('logout-modal')">
+                No
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // JavaScript for modals
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    // Close the modal when clicking outside of it
+    window.onclick = function (event) {
+        const modals = document.getElementsByClassName("modal");
+        for (let i = 0; i < modals.length; i++) {
+            if (event.target === modals[i]) {
+                modals[i].style.display = "none";
+            }
+        }
+    };
+
+    var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>

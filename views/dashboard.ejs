@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+
+    <body>
+        <%- include('partials/header_dashboard', { page: 'Dashboard' }) %>
+
+            <main class="main">
+                <div class="home section">
+                    <div class="home_container container grid">
+                        <div class="container userCard">
+                            <h1>Welcome, <%= user.username %>!</h1>
+
+
+                            <div class="box box1">
+                                <img src="<%= user.profileImageUrl || '/img/free-user-icon-3296-thumb.png' %>"
+                                    alt="User Icon">
+                            </div>
+                            <p class="userText">
+                                Welcome to your account settings!<br> Here, you can update your
+                                username, password and profile picture effortlessly.
+                            </p>
+
+                            <form action="/update-credentials" method="post" enctype="multipart/form-data">
+                                <input class="footer_input" type="email" name="username" placeholder="New Username" />
+                                <input class="footer_input" type="password" name="password"
+                                    placeholder="New Password" />
+
+                                <div class="uploadPimage">
+                                    <input type="file" name="profileImage" id="profileImage" accept="image/*"
+                                        onchange="loadFile(event)">
+                                    <div class="prevDiv">
+                                        <p>Preview:</p><img class="prev" id="output" />
+                                    </div>
+
+                                </div>
+
+                                <button class="button" type="submit">Save changes</button>
+                            </form>
+
+                            <div class="delete_card2">
+                                <p>
+                                    If you've decided to part ways, you can easily delete your
+                                    account here. Click the button below to proceed with account
+                                    deletion. Rest assured, this action is irreversible, so make
+                                    sure it's what you truly want before confirming.
+                                </p>
+                                <button class="button_delete" type="button" onclick="openModal('delete-modal')">
+                                    Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Modals -->
+            <div id="update-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('update-modal')">&times;</span>
+                    <p>Are you sure you want to update your credentials?</p>
+                    <form>
+                        <button class="button" type="button" onclick="document.forms[0].submit()">
+                            Yes
+                        </button>
+                        <button class="button_delete" type="button" onclick="closeModal('update-modal')">
+                            No
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div id="delete-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal('delete-modal')">&times;</span>
+                    <p>
+                        Are you sure you want to delete your account? This action cannot be
+                        undone.
+                    </p>
+                    <form action="/delete-account" method="post">
+                        <button class="button_delete" type="submit">Yes</button>
+                        <button class="button" type="button" onclick="closeModal('delete-modal')">
+                            No
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            
+
+            <%- include('partials/modal_delete') %> 
+
+            <%- include('partials/footer') %> 
+            
+            <%- include('partials/scripts') %>
+
+                    
+    </body>
+
+</html>
