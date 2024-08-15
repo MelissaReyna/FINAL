@@ -12,7 +12,9 @@ const { body, validationResult } = require('express-validator');
 require('dotenv/config');
 
 // Firebase Admin SDK Configuration
-const serviceAccount = require('./config/serviceAccountKey.json');
+const serviceAccount = JSON.parse(
+    process.env.FIREBASE_SERVICE_ACCOUNT_KEY
+);
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -56,6 +58,7 @@ const limits = {
 const upload = multer({ storage, fileFilter, limits });
 
 const app = express();
+
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -316,3 +319,6 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+module.exports = app;
